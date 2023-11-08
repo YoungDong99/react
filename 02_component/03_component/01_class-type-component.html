@@ -23,7 +23,15 @@
         이러한 함수형 컴포넌트의 기능적 한계로 훅스(hooks)를 제공하고 있다.
     -->
     <script type='text/babel'>
-    
+        class Title extends React.Component {
+
+            render() {
+                return (
+                    <h1>Class Component</h1>
+                );
+            }
+        }
+        ReactDOM.createRoot(document.getElementById('root')).render(<Title/>);
     </script>
 </body>
 </html>
