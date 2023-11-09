@@ -28,8 +28,38 @@
             constructor(props) {
                 /* 부모 컴포넌트로부터 전달받은 props를 부모클래스의 생성자에 전달하면서 컴포넌트를 생성한다. */
                 super(props);
+                
+                /*
+                    state를 초기화한다. state는 생성자 안에서 초기화하는 경우 this.을 붙여야한다.
+
+                    주의사항
+                    state는 생성자 안에서 작성할 시 this.을 명시해야 한다. 
+                    또한 이름은 반드시 state로 해야하며, state에 저장되는 값의 형태는 반드시 Object 리터럴 형태로 작성해야한다. 
+                */
+                this.state = {
+                    number: 0
+                }
+            }
+
+            render() {
+                // state에 저당된 number 상태값을 비구조화 할당을 이용해 저장
+                const {number} = this.state;
+                /*
+                    state의 상태값을 변경하기 위해서는 setState함수를 이용해야 한다. 
+                    새로운 상태값을 가지고 있는 Object를 동일한 키로 설정하여 인자로 전달하면 state객체를 덮어쓰게된다. 
+                    기존 state에 여러 값들이 있다고해도 동일한 키를 가진 값만 덮어쓰게된다.
+                */
+                return (
+                    <>
+                        <h1 style={ (number < 0)? {color:'red'}: {color:'blue'} }>Count : { number }</h1>
+                        <button onClick={() => this.setState({number: number - 1})}>-1</button>
+                        <button onClick={() => this.setState({number: number + 1})}>+1</button>
+                    </>
+                )
             }
         }
+
+        ReactDOM.createRoot(document.getElementById('root')).render(<Counter />);
 
     </script>
 </body>
