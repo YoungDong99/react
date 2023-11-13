@@ -26,7 +26,7 @@
             ]);
 
             const [inputText, setInputText] = useState('');
-            const [nextId, setNextId] = useState(4);
+            const [nextId, setNextId] = useState(6);
 
             const onChangeHandler = e => setInputText(e.target.value);
             const onClickHandler = () => {
@@ -45,9 +45,24 @@
                 const changedNames = names.filter(name => name.id !== id);
                 setNames(changedNames);
             }
+            /*
+                {id: 1, name: '홍길동'},
+                {id: 2, name: '유관순'},
+                {id: 3, name: '이순신'}
+            */
 
             const nameList = names.map(name => <li key={ name.id } onDoubleClick={ () => onRemove(name.id)}>{ name.name }</li>);
+
+            return (
+                <>
+                    <input value= { inputText } onChange={ onChangeHandler }/>
+                    <button onClick={ onClickHandler }>추가</button>
+                    <ul>{ nameList }</ul>
+                </>
+            )
         }
+        
+        ReactDOM.createRoot(document.getElementById('root')).render(<App />);
     </script>
 </body>
 </html>
