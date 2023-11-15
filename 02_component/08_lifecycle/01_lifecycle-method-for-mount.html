@@ -75,13 +75,14 @@
                     이 메소드 내에서는 이벤트 설정이 아닌 곳에서 setState를 사용하면 안된다.
                     또한 브라우저의 DOM에 접근해서도 안된다.
 
-                    
+                    DOM정보를 가지고 오거나 state에 변화를 줄 때 componentDidMount에서 처리해야한다.
                 */
 
                 cosole.log('render');
                 return <h1>Hello World, { this.state.text }</h1>;
             }
 
+            /* 4. 컴포넌트가 웹 브라우저 상 나타난 후 호출하는 메소드 */
             componentDidMount() {
                 console.log('componentDidMount');
             }
